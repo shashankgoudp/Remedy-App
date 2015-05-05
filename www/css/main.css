@@ -1,0 +1,273 @@
+div#login {
+	background-color:#310c3d;
+	background-image: url("../images/bg.png");
+	background-repeat: repeat-x;
+}
+
+div#footer{
+	width:100%;
+	background-color:#47244c;
+}
+
+h1#remedy-title {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+	font-size: 250%;
+	letter-spacing: 5px;
+	color:white;
+	text-align: center;
+	margin-bottom:0px;
+}
+
+h1#remedy-header {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+	font-size: 100%;
+	letter-spacing: 2px;
+	color:white;
+	text-align: center;
+	margin-bottom:0px;
+}
+
+h2#popupReg {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+	font-size: 100%;
+	letter-spacing: 2px;
+	color:red;
+	text-align: center;
+	margin-bottom:0px;
+	padding:0 0 0 0;
+}
+
+
+a.newentry {
+	width:100%;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	background-color:white;
+}
+
+div.newentry {
+	width:100%;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	background-color:white;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 120%;
+	letter-spacing: 1px;
+	color:#47244c;
+	text-align: center;
+}
+
+div.entries {
+	width:100%;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;	
+}
+
+#newentrybar {
+	padding-top: 40px;
+
+}
+
+#painentrybar {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#paingrid {
+	padding-top: 20px;
+}
+
+#painTxt {
+	padding-top: 10px;
+}
+
+div#newentry {
+	width:100%;
+	padding:0 0 0 0;
+	margin-top:0px;
+	background-color:white;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 120%;
+	letter-spacing: 1px;
+	color:#47244c;
+	text-align: center;
+	border-bottom: 2px solid #47244c
+}
+
+.ui-bar.ui-bar-a{
+	width:100%;
+	background-color:white;
+	border:0px;
+	border-bottom:2px solid #47244c;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 120%;
+	font-weight: 300;
+	letter-spacing: 1px;
+	color:#47244c;
+	text-align: center;
+	padding:0 0 0 0;
+	padding-top:40px;
+}
+
+
+.ui-grid-b.entry{
+margin-top:-20px;
+width:100%;
+background-color:white;
+}
+
+.ui-block-a.entry{
+width:100%;
+background-color:white;
+}
+
+a.nobtn:link{
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 100%;
+	font-weight: 300;
+	letter-spacing: 1px;
+	color:#ffffff;
+	text-align: center;
+
+}
+.ui-checkbox {
+float:left;
+width:100%;
+}
+.ui-controlgroup-controls {
+margin:0 auto;
+width:100%;
+}
+
+#headerconfig {
+padding-top:0px;
+
+}
+
+#clearbg {
+background-color:#47244c;
+border:none;
+padding-top:10px;
+}
+
+
+#trigger-main{
+margin:0;
+padding: 0 0 0 0;
+width:100%;
+
+}
+
+#trigger-group{
+margin-top:10px;
+width:100%;
+
+}
+
+#smallertext {
+text-align:center;
+font-size: 80%;
+
+}
+#clrbtn {
+float:left;
+	width:35%;
+    color:white;
+}
+#selColor-button {
+    color:white;
+	background-color:#33FF33;
+}
+#painArea-button {
+
+}
+
+#invalidlogin{
+	color:white;
+	text-align:center;
+	display:block;
+}
+
+select option {
+    margin:40px;
+    color:#2C3539;
+}
+.pain0{
+    background-color: #33FF33;
+}
+.pain1{
+    background-color: #80FF00;
+}
+.pain2{
+    background-color: #99FF33;
+}
+.pain3{
+    background-color: #B2FF66;
+}
+.pain4{
+    background-color: #FFFF66;
+}
+.pain5{
+    background-color: #FFFF00;
+}
+.pain6{
+    background-color: #FF9933;
+}
+.pain7{
+    background-color: #FF8000;
+}
+.pain8{
+    background-color: #FF6666;
+}
+.pain9{
+    background-color: #FF0000;
+}
+
+.outer-scroller { 
+	overflow: scroll;
+	width: 99%;
+	height: 158px; 
+	padding-bottom:0px;
+}
+.inner-scroller { 
+	height: 150px;
+	width: 1000px; /* Changed dynamically */
+}
+
+.PIimg {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#PIlist {
+	margin-top:5px;
+}
+
+.selectedEntry {
+	border: solid 2px #310c3d;
+}
+
+.wrap {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 100% !important; 
+    white-space: normal !important;
+}
+
+.liTriggers {
+	padding:0px 0px 0px 0px !important;
+	margin:0px 0px 0px 0px !important;
+}
+
+.ui-checkbox {
+	padding:3px 0px 3px 0px !important;
+	margin:0px 0px 0px 0px !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+

@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="user-scalable=no, width=device-width, maximum-scale=1.0, initial-scale=1" />
+	<link rel="stylesheet" href="js/libs/jquerym/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="css/themes/remedy.css" />
+	<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="css/main.css" />
+		<script src="js/libs/jquery/jquery.min.js"></script>
+		<script src="js/libs/jquerym/jquery.mobile-1.4.5.min.js"></script>
+		<script src="js/pouchdb-3.4.0.min.js"></script>
+		<script type="text/javascript" src="js/charts/Chart.js"></script>
+		<script type="text/javascript" src="js/jquery.sparkline.min.js"></script>
+		<script type="text/javascript" src="js/drawCode.js"></script>
+		<script src="js/main.js"></script>
+<title>Remedy Home</title>
+</head>
+<body >
+
+<!--   LOGIN PAGE	!-->
+<div data-role="page" id="login">
+	<div role="main" class="ui-content">
+		<form >
+		<h1 id="remedy-title"><img src="images/logo.png" /></h1>
+		<input type="text" name="textinput-user" id="textinput-user" placeholder="Username" value="" data-clear-btn="true">
+			<input type="password" name="textinput-pass" id="textinput-pass" placeholder="Password" value="" data-clear-btn="true">
+		</form>
+		<a href="#" onclick="javascript:verifyUser();" class="ui-btn ui-shadow ui-corner-all" data-transition="slide">LOGIN</a>
+		<a href="#home" id="loginLink"></a>
+		<a href="#popupReg" data-rel="popup"  class="ui-btn ui-shadow ui-corner-all" data-transition="pop">REGISTER</a>
+		<div data-role="popup" id="popupReg" style="padding:30px 25px; margin-bottom:10px" data-dismissible="false">
+		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
+		<form >
+		<h2 style="text-align:center">Enter Your Info</h2>
+			<input type="text" name="reg-user" id="reg-user" placeholder="Username" value="" data-clear-btn="true">
+			<input type="password" name="reg-pass" id="reg-pass" placeholder="Password" value="" data-clear-btn="true">
+			<input type="text" name="reg-name" id="reg-name" placeholder="Name" value="" data-clear-btn="true">
+			<input type="text" name="reg-age" id="reg-age" placeholder="Age" value="" data-clear-btn="true" style="width:50%;">
+			<input type="text" name="reg-weight" id="reg-weight" placeholder="Weight" value="" data-clear-btn="true">
+			<select name="reg-gender" id="reg-gender" data-theme="c" data-role="slider">
+				<option value="M">Male</option>
+		        <option value="F">Female</option>
+			</select>
+
+			<a href="#" onclick="javascript:registerUser();" data-rel="back" class="ui-btn ui-shadow ui-corner-all">SUBMIT</a>
+		</form>
+		</div>
+		<p id="invalidlogin"></p>
+		
+	</div>
+</div>
+
+
+<!--  HOME PAGE	!-->
+<div data-role="page" id="home">
+	<div data-role="header" data-position="fixed">	<h1 id="remedy-header">REMEDY</h1>		</div>
+	<div role="main" class="ui-content entries">
+		<div class="ui-grid-b entry" id="paingrid">
+
+		</div>
+	</div>
+	<div data-role="footer" id="footer" data-position="fixed">
+		<div data-position="fixed">
+			<div data-role="navbar" data-grid="c" data-position="fixed">
+				<ul data-position="fixed">
+					<li><a href="#" class="ui-btn-active ui-btn-b" data-transition="none"><img class="svg" src="images/icons/home.svg" height="42" width="42"/></a></li>
+					<li><a href="#charts" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/chart.svg" height="42" width="42"/></a></li>
+					<li><a href="#userinfo" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/card.svg" height="42" width="42"/></a></li>
+					<li><a href="#options" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/gear.svg" height="42" width="42"/></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--   PAIN INFO PAGE	!-->
+<div data-role="page" id="painInfo">
+	<div data-role="header" data-position="fixed" id="headerconfig">
+		<a href="#home"  id="clearbg" class="ui-btn-2" data-transition="slide" data-direction="reverse">BACK</a>
+		<h1 class="painInfoName" id="remedy-header">Pain Name</h1>		
+	</div>
+	<div role="main" class="ui-content">
+		<div class="outer-scroller">
+			<div class="inner-scroller">
+
+			</div>
+		</div>
+		<div style="width:100%">
+			<div id="chartCanvas">
+				<canvas id="painChart"></canvas>
+			</div>
+		</div>
+		<ul id="PIlist" data-role="listview">
+			<li id="PIdate">test</li>
+			<li><p class="wrap" id="PIdesc">test date</p></li>
+		</ul><br>
+		<a href="#new-entry" class="ui-btn ui-shadow ui-corner-all" data-transition="slide">UPDATE</a>
+	</div>
+</div>
+
+<!--   NEW ENTRY/UPDATE PAGE	!-->
+<div data-role="page" id="new-entry">
+	<div data-role="header" data-position="fixed" id="headerconfig">
+		<a href="#home"  id="clearbg" class="ui-btn-2" data-transition="slide" data-direction="reverse">BACK</a>
+		<h1 id="remedy-header">PAIN INFO</h1>	
+		<a onclick="javascript:clearArea();" href="#selectdrawpain"  id="clearbg" class="updateLink ui-btn-2" data-transition="slide" >NEXT</a>	
+	</div>
+	<div role="main" class="ui-content">
+			<div id="painNameField">
+			<label for="text-18">Name:</label>
+			<input type="text" name="text-18" id="text-18" placeholder="ex. twisted ankle">
+			</div>
+			<label for="text-18">When did it start?</label>
+			<input id="pain-date" type="datetime-local"  placeholder="select date">
+			<label for="textarea-18">Describe possible cause</label>
+			<textarea cols="120" rows="8" name="textarea-18" id="textarea-18" placeholder="ex. I slipped while ice-skating"></textarea>
+		<a href="#selectdrawpain" class="updateLink ui-btn ui-shadow ui-corner-all" data-transition="slide">NEXT</a>
+	</div>
+</div>
+
+<!--   SELECT PAGE	!-->
+<div data-role="page" id="selectdrawpain">
+	<div data-role="header" data-position="fixed" id="headerconfig">
+		<a href="#new-entry"  id="clearbg" class="ui-btn-2" data-transition="slide" data-direction="reverse">BACK</a>
+		<h1 id="remedy-header">PAIN AREA</h1>		
+	</div>
+	<div role="main" class="ui-content">
+		<div align="center">
+		<img src="images/flipr.png" id="changeImgMap" style="vertical-align:top"/>
+		<img src="images/bodySelectFront.png" id="bodySelect" usemap="#frontmap" width="210px" height="480px"/>
+		<map name="frontmap" id="frontmap">
+			<area id="parea-0" alt="head" title="head" href="#drawpain" data-transition="slide" shape="poly" coords="109,6,82,13,72,39,76,61,95,78,109,81,131,73,147,44,142,23,130,10" />
+			<area id="parea-1" alt="leftupper" title="rightUpper" href="#drawpain" shape="poly" coords="74,71,71,72,50,79,34,103,39,127,59,143,74,146,85,141,97,134,109,112,104,90,90,78" />
+			<area id="parea-2" alt="rightupper" title="leftUpper" href="#drawpain" shape="poly" coords="149,72,132,76,118,86,112,108,117,125,129,137,146,144,161,143,177,132,185,116,184,93,170,75" />
+			<area id="parea-3" alt="lower" title="lower" href="#drawpain" shape="poly" coords="111,137,95,141,80,152,75,169,78,187,92,198,108,202,127,199,140,188,147,170,142,153,131,144" />
+			<area id="parea-4" alt="lefthand" title="rightHand" href="#drawpain" shape="poly" coords="50,145,33,152,20,175,12,199,10,226,15,247,26,260,45,253,56,235,65,213,67,179,61,152" />
+			<area id="parea-5" alt="righthand" title="leftHand" href="#drawpain" shape="poly" coords="161,148,181,157,190,170,196,187,202,213,201,230,199,248,190,262,167,254,156,239,149,218,146,197,148,174,152,159" />
+			<area id="parea-6" alt="knees" title="knees" href="#drawpain" shape="poly" coords="107,292,84,301,67,314,64,346,79,365,95,372,118,374,136,368,151,356,158,330,152,310,131,295" />
+			<area id="parea-7" alt="feet" title="feet" href="#drawpain" shape="poly" coords="111,377,92,383,77,390,67,409,68,425,76,444,88,454,108,459,124,456,140,450,152,443,154,419,150,396,136,380" />
+			<area id="parea-8" alt="legs" title="legs" href="#drawpain" shape="poly" coords="109,210,87,217,71,234,81,276,110,287,128,281,143,264,145,243,138,226,134,215,122,209" />
+		</map>
+		<img src="images/flip.png" id="changeImgMap2" style="vertical-align:top"/>
+		</div>
+		
+	</div>
+</div>
+
+<!--   DRAW PAGE	!-->
+<div data-role="page" id="drawpain">
+	<div data-role="header" data-position="fixed" id="headerconfig">
+		<a href="#selectdrawpain"  id="clearbg" class="updateLink2 ui-btn-2" data-transition="slide" data-direction="reverse">BACK</a>
+		<h1 id="remedy-header">LOCATE PAIN</h1>	
+		<a href="#triggers"  id="clearbg" class="ui-btn-2" data-transition="slide" >NEXT</a>	
+	</div>
+	<div role="main" class="ui-content">
+		<div align="center">
+        <canvas id="myCanvas" width="280" height="280" style="border:2px solid black"></canvas>
+       <!-- <button id="clrbtn" onclick="javascript:clearArea();return false;">Clear</button> !-->
+		<ul id="drawList" data-role="listview" style="padding:20px 0px 0px 0px;">
+			<li style="padding:0px 8px 0px 8px;">
+				<select id="selColor">
+					<option class="pain0" value="#33FF33" selected="selected">Pain Level: 0 NO PAIN</option>
+					<option class="pain1" value="#80FF00" >Pain Level: 1</option>
+					<option class="pain2" value="#99FF33" >Pain Level: 2 MILD PAIN</option>
+					<option class="pain3" value="#B2FF66" >Pain Level: 3</option>
+					<option class="pain4" value="#FFFF66">Pain Level: 4 MODERATE PAIN</option>
+					<option class="pain5" value="#FFFF00">Pain Level: 5</option>
+					<option class="pain6" value="#FF9933">Pain Level: 6</option>
+					<option class="pain7" value="#FF8000" >Pain Level: 7 SEVERE PAIN</option>
+					<option class="pain8" value="#FF6666" >Pain Level: 8</option>
+					<option class="pain9" value="#FF0000" >Pain Level: 9 EXTREME PAIN</option>
+				</select>
+			</li>
+			<li class="ui-field-contain" style="padding:5px 8px 5px 8px;">
+			<label for="lineWidth" align="center"><b>Brush Size</b></label>
+			<input type="range" name="lineWidth" id="lineWidth" data-highlight="true" min="10" max="50" value="30" data-theme="c"></li>
+		</ul>
+		</div>
+	</div>
+</div>
+
+<!--   TRIGGERS PAGE	!-->
+<div data-role="page" id="triggers">
+	<div data-role="header" data-position="fixed" id="headerconfig" >
+		<a href="#drawpain"  id="clearbg" class="ui-btn-2" data-transition="slide" data-direction="reverse">BACK</a>
+		<h1 id="remedy-header">TRIGGERS</h1>	
+		<a href="#home" onclick="javascript:addPain();" id="clearbg" class="ui-btn-2" data-transition="slide" >NEXT</a>	
+	</div>
+	<div role="main" id="trigger-main" class="ui-content">
+	<ul id="triggerList2" data-role="listview" style="margin-top:-8px !important;">
+			<li><input type="text" name="newTrigger" id="newTrigger" placeholder="Enter New Trigger"></li>
+			
+	</ul>
+	<form class="ui-filterable">
+	<input id="filter-triggers" data-type="search" placeholder="Search for triggers...">
+	</form>
+		
+		<ul id="triggerList" data-role="listview" data-filter="true" data-inset="true" data-input="#filter-triggers">
+			
+		</ul>
+	</div>
+</div>
+
+<!--  CHART DATA PAGE	!-->
+<div data-role="page" id="charts">
+	<div data-role="header">	<h1 id="remedy-header">CHARTS</h1>		</div>
+	<div role="main" class="ui-content">
+	<ul id="Chartlist" data-role="listview">
+		<li>Pain Types</li>
+		<li>
+			<div id="pieChartCanvasDiv">
+				<canvas id="pieChart"></canvas>
+			</div>
+		</li>
+		<li>Common Triggers</li>
+		<li>
+			<div id="pieChartCanvasDiv">
+				<canvas id="pieChart2"></canvas>
+			</div>
+		</li>
+	</ul><br>
+	</div>
+	<div data-role="footer" id="footer" data-position="fixed">
+		<div>
+			<div data-role="navbar" data-grid="c">
+				<ul>
+					<li><a href="#home" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/home.svg" height="42" width="42"/></a></li>
+					<li><a href="#" class="ui-btn-active ui-btn-b" data-transition="none"><img class="svg" src="images/icons/chart.svg" height="42" width="42"/></a></li>
+					<li><a href="#userinfo" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/card.svg" height="42" width="42"/></a></li>
+					<li><a href="#options" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/gear.svg" height="42" width="42"/></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--  USER PAGE	!-->
+<div data-role="page" id="userinfo">
+	<div data-role="header">	<h1 id="remedy-header">REMEDY</h1>		</div>
+	<div role="main" class="ui-content">
+	<ul id="PIlist" data-role="listview">
+			<li id="UIname">Name:</li>
+			<li id="UIage">Age:</li>
+			<li id="UIweight">Weight:</li>
+			<li id="UIsex">Sex:</li>
+			<li id="UIprovider">Provider: Dr. Not Real</li>
+			<li id="UIentries"># of Entries:</li>
+	</ul><br>
+	</div>
+	<div data-role="footer" id="footer" data-position="fixed">
+		<div>
+			<div data-role="navbar" data-grid="c">
+				<ul>
+					<li><a href="#home" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/home.svg" height="42" width="42"/></a></li>
+					<li><a href="#charts" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/chart.svg" height="42" width="42"/></a></li>
+					<li><a href="#" class="ui-btn-active ui-btn-b" data-transition="none"><img class="svg" src="images/icons/card.svg" height="42" width="42"/></a></li>
+					<li><a href="#options" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/gear.svg" height="42" width="42"/></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--   OPTIONS PAGE	!-->
+<div data-role="page" id="options">
+	<div data-role="header">	<h1 id="remedy-header">REMEDY</h1>		</div>
+	<div role="main" class="ui-content">
+		<a href="#login" class="ui-btn ui-shadow ui-corner-all" data-transition="slide">Logout</a>
+	</div>
+	<div data-role="footer" id="footer" data-position="fixed">
+		<div>
+			<div data-role="navbar" data-grid="c">
+				<ul>
+					<li><a href="#home" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/home.svg" height="42" width="42"/></a></li>
+					<li><a href="#charts" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/chart.svg" height="42" width="42"/></a></li>
+					<li><a href="#userinfo" class="ui-btn-b" data-transition="none"><img class="svg" src="images/icons/card.svg" height="42" width="42"/></a></li>
+					<li><a href="#" class="ui-btn-active ui-btn-b" data-transition="none"><img class="svg" src="images/icons/gear.svg" height="42" width="42"/></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>
